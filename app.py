@@ -37,4 +37,4 @@ if __name__ == '__main__':
     model_columns = joblib.load("model_columns.pkl") # Load "model_columns.pkl"
     print ('Model columns loaded')
 
-    app.run(host='0.0.0.0', port=8080)
+    app.run(port=8080)
