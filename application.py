@@ -15,4 +15,4 @@ except IOError:
 
 # Importing Application
 
-from api import predict as application
+from api import app as application
