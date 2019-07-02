@@ -26,7 +26,7 @@ def predict():
 
             return jsonify({'trace': traceback.format_exc()})
     else:
-        print ('Train the model first')
+        print ('Train the model first.')
         return ('No model here to use')
 
 
