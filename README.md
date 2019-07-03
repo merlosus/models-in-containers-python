@@ -51,6 +51,8 @@ Multiple
 
 # Credits
 
-It must be noted that this project uses significant portions of code from a DataCamp tutorial.
-This was done to keep the code as simple as possible as the model is not important to this demonstration.
+The Flask and GUniconrn program structure owes credit to Graham Dumpleton. His demonstration of Flask applications in an Openshift environment gave helpful insights.
+The machine learning model was taken from a datacamp tutorial to keep the concepts simple. It was then modified to run within the GUnicorn context on the Openshift environment.
+ 
 * https://www.datacamp.com/community/tutorials/machine-learning-models-api-python
+* https://github.com/GrahamDumpleton
