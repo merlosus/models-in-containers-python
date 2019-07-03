@@ -35,11 +35,9 @@ def predict():
         return ('No model here to use')
 
 
-if __name__ == '__main__':
+lr = joblib.load("model.pkl") # Load "model.pkl"
+print ('Model loaded')
+model_columns = joblib.load("model_columns.pkl") # Load "model_columns.pkl"
+print ('Model columns loaded')
 
-    lr = joblib.load("model.pkl") # Load "model.pkl"
-    print ('Model loaded')
-    model_columns = joblib.load("model_columns.pkl") # Load "model_columns.pkl"
-    print ('Model columns loaded')
-
-    application.run()
+application.run()
