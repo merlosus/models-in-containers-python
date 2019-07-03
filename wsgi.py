@@ -5,7 +5,9 @@ import traceback
 import pandas as pd
 import numpy as np
 
-# Your API definition
+print(__name__)
+
+# API definition
 application = Flask(__name__)
 
 
@@ -35,11 +37,12 @@ def predict():
         return ('No model here to use')
 
 
-print(__name__)
-
 lr = joblib.load("model.pkl") # Load "model.pkl"
 print ('Model loaded')
 model_columns = joblib.load("model_columns.pkl") # Load "model_columns.pkl"
 print ('Model columns loaded')
 
-application.run(debug=True)
+
+if __name__ == '__main__':
+
+    application.run()
