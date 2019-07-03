@@ -4,20 +4,17 @@ from sklearn.externals import joblib
 import traceback
 import pandas as pd
 import numpy as np
-import os
-
-if 'OPENSHIFT_APP_NAME' in os.environ:              #are we on OPENSHIFT?
-    ip = os.environ['OPENSHIFT_PYTHON_IP']
-    port = int(os.environ['OPENSHIFT_PYTHON_PORT'])
-else:
-    ip = '0.0.0.0'                            #localhost
-    port = 8051
 
 # Your API definition
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route('/predict', methods=['POST'])
+@application.route("/")
+def index():
+    return "Hello, World!"
+
+
+@application.route('/predict', methods=['POST'])
 def predict():
     if lr:
         try:
@@ -45,4 +42,4 @@ if __name__ == '__main__':
     model_columns = joblib.load("model_columns.pkl") # Load "model_columns.pkl"
     print ('Model columns loaded')
 
-    app.run(port=port,host=ip)
+    application.run()
