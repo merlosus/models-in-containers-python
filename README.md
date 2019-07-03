@@ -13,7 +13,7 @@ This example uses the well known Titanic dataset. A classifier is trained and th
 
 ## Deployment Steps
 
-To deploy this sample Python web application from the OpenShift web console, you should select ``python:2.7``, ``python:3.3``, ``python:3.4`` or ``python:latest``, when using _Add to project_. Use of ``python:latest`` is the same as having selected the most up to date Python version available, which at this time is ``python:3.4``.
+To deploy this sample Python web API from the OpenShift web console, you should select ``python:latest``, when using _Add to project_. Use of ``python:latest`` is the same as having selected the most up to date Python version available.
 
 The HTTPS URL of this code repository which should be supplied to the _Git Repository URL_ field when using _Add to project_ is:
 
@@ -24,11 +24,33 @@ If using the ``oc`` command line tool instead of the OpenShift web console, to d
 ```
 oc new-app https://github.com/merlosus/models-in-containers-python.git
 ```
+## Using the API
 
-In this case, because no language type was specified, OpenShift will determine the language by inspecting the code repository. Because the code repository contains a ``requirements.txt``, it will subsequently be interpreted as including a Python application. When such automatic detection is used, ``python:latest`` will be used.
+Send a POST request to
 
-If needing to select a specific Python version when using ``oc new-app``, you should instead use the form:
+* http://your_openshift_applicaton_url/predict
 
+The request should contain one or more JSON objects formatted as below:
+
+Single
 ```
-oc new-app python:2.7~https://github.com/merlosus/models-in-containers-python.git
+[
+	{"Age": 50 , "Sex": "male", "Embarked": "S"}
+]
 ```
+Multiple
+```
+[
+	{"Age": 50 , "Sex": "male", "Embarked": "S"},
+	{"Age": 24 , "Sex": "female", "Embarked": "C"}
+]
+```
+* Age refers to a discrete numeric value
+* Sex refers to the gender represented by a string value "male" or "female"
+* Embarked refers to the port in which a passenger has embarked. C - Cherbourg, S - Southampton, Q = Queenstown
+
+# Credits
+
+It must be noted that this project uses significant portions of code from a DataCamp tutorial.
+This was done to keep the code as simple as possible as the model is not important to this demonstration.
+* https://www.datacamp.com/community/tutorials/machine-learning-models-api-python

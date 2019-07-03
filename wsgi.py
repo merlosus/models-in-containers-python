@@ -5,8 +5,6 @@ import traceback
 import pandas as pd
 import numpy as np
 
-print(__name__)
-
 # API definition
 application = Flask(__name__)
 
