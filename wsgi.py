@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify
 from sklearn.externals import joblib
 import traceback
 import pandas as pd
-
 import numpy as np
 
 # API definition
@@ -44,4 +43,4 @@ print ('Model columns loaded')
 
 if __name__ == '__main__':
 
-    application.run(debug="true")
+    application.run()
