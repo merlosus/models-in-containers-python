@@ -24,7 +24,7 @@ def predict():
             print(json_)
             query = pd.get_dummies(pd.DataFrame(json_))
             query = query.reindex(columns=model_columns, fill_value=0)
-            n_chunks = 5
+            n_chunks = -1
             n_samples = query.shape[0]
             slices = np.array_split(query, n_chunks)
             slices = [query for query in slices if query.size > 0]
