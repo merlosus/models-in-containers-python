@@ -21,15 +21,14 @@ def predict():
         try:
             prep = []
             json_ = request.json
-            print(json_)
             query = pd.get_dummies(pd.DataFrame(json_))
             query = query.reindex(columns=model_columns, fill_value=0)
             n_chunks = -1
-            n_samples = query.shape[0]
-            slices = np.array_split(query, n_chunks)
+            n_samples = 5 #query.shape[0]
+            slices = np.array_split(query, n_samples)
             slices = [query for query in slices if query.size > 0]
             jobs = (delayed(lr.predict)(array) for array in slices)
-            parallel = Parallel(n_jobs=n_chunks)
+            parallel = Parallel(n_jobs=n_chunks, prefer="threads")
             results = parallel(jobs)
             for item in results:
                 prep.append(item.tolist())
