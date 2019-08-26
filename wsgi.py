@@ -12,7 +12,7 @@ application = Flask(__name__)
 
 @application.route("/")
 def index():
-    return "Hello, World!"
+    return "For instructions on use see https://github.com/merlosus/models-in-containers-python"
 
 
 @application.route('/predict', methods=['POST'])
